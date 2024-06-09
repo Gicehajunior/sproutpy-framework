@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title> 
+    <!-- Bootstrap CSS -->
+    <link type="text/css" href="http://127.0.0.1:8000/public/asst/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="http://127.0.0.1:8000/public/asst/css/main.css" rel="stylesheet"> 
+</head>
+<body>
+    <div class="login-container">
+        <h2 class="text-center">Login</h2>
+        <form>
+            <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" id="username" placeholder="Enter username" value="{{username}}">
+            </div> 
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" placeholder="Enter password" value="{{password}}">
+            </div>
+            <div class="form-group pt-3">
+                <button type="submit" class="btn btn-primary btn-sm">Login</button>
+            </div>
+        </form>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="http://127.0.0.1:8000/public/asst/jquery/jquery.js"></script>
+    <script type="module" src="http://127.0.0.1:8000/public/asst/js/popper.min.js"></script>
+    <script src="http://127.0.0.1:8000/public/asst/js/bootstrap.min.js"></script>
+</body>
+</html>

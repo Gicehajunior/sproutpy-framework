@@ -1,0 +1,11 @@
+*.pyc
+.env
+nodemodules
+test.py
+public/main.js
+node_modules
+public/asst/css/bootstrap.min.css
+public/asst/jquery/jquery.js
+public/asst/js/bootstrap.min.js
+public/asst/js/popper.min.js
+

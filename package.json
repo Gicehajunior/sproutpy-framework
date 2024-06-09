@@ -1,0 +1,44 @@
+{
+    "name": "sproutepy-framework",
+    "version": "1.0.0",
+    "description": "Sproutepy is a Python-based web framework designed to simplify and streamline the development of web applications. It offers a modular architecture, robust routing system, built-in template engine, ORM integration, authentication and authorization support, middleware capabilities, RESTful API development tools, and testing support.",
+    "main": "./public/index.js",
+    "scripts": {
+        "build:dev": "webpack --mode development",
+        "build:prod": "webpack --mode production"
+    },
+    "keywords": [
+        "Python",
+        "Sproutepy",
+        "Framework",
+        "MVC"
+    ],
+    "author": {
+        "name": "Giceha Junior",
+        "email": "gicehajunior76@daphascomp.com",
+        "url": "https://github.com/Gicehajunior"
+    },
+    "repository": "https://github.com/Gicehajunior/sproutpy-framework",
+    "license": "MIT",
+    "dependencies": {
+        "bootstrap": "^5.0.1",
+        "dotenv": "^16.4.5",
+        "fs-extra": "^11.2.0",
+        "gulp": "^4.0.2",
+        "gulp-javascript-obfuscator": "^1.1.6",
+        "gulp-sourcemaps": "^3.0.0",
+        "jquery": "^3.6.0",
+        "minimist": "^1.2.8",
+        "popper.js": "^1.16.1",
+        "vinyl-sourcemaps-apply": "^0.2.1"
+    },
+    "devDependencies": {
+        "@babel/cli": "^7.24.7",
+        "@babel/core": "^7.24.7",
+        "@babel/preset-env": "^7.24.7",
+        "babel-loader": "^9.1.3",
+        "copy-webpack-plugin": "^12.0.2",
+        "webpack": "^5.91.0",
+        "webpack-cli": "^5.1.4"
+    }
+}
