@@ -25,7 +25,7 @@ class AuthController(SprouteApp):
         self.input['username'] = request.get('username')
         self.input['password'] = request.get('password')
         
-        return view('auth.login', {
+        return route('dashboard', {
             'status': 'success', 
             'message': self.input
         })
