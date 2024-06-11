@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashbord</title> 
+    <!-- Bootstrap CSS -->
+    <link type="text/css" href="http://127.0.0.1:8000/public/asst/css/bootstrap.min.css" rel="stylesheet">
+    <link type="text/css" href="http://127.0.0.1:8000/public/asst/css/main.css" rel="stylesheet"> 
+</head>
+<body>
+    <div class="main">
+        <nav class="navbar navbar-expand-sm navbar-light bg-light">
+            <a class="navbar-brand" href="/">Sprout<b>Py</b></a>
+            <button class="navbar-toggler d-lg-none" type="button" data-toggle="collapse" data-target="#collapsibleNavId" aria-controls="collapsibleNavId"
+                aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="collapsibleNavId">
+                <ul class="navbar-nav mr-auto mt-2 mt-lg-0"> 
+                    <li class="nav-item">
+                        <a class="nav-link" href="https://github.com/Gicehajunior/sproutpy-framework/blob/main/Readme.md">Documentation</a>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+                <ul class="navbar-nav ml-auto mt-2 mt-lg-0"> 
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle float-right" href="#" id="dropdownId" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="dropdownId">
+                            <a class="dropdown-item" href="#">Settings</a>
+                            <a class="dropdown-item" href="/logout">Logout</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+
+        <div class="content">
+            <p>{{message}}</p>
+        </div>
+    </div>
+    <!-- Bootstrap JS and dependencies -->
+    <script src="http://127.0.0.1:8000/public/asst/jquery/jquery.js"></script>
+    <script type="module" src="http://127.0.0.1:8000/public/asst/js/popper.min.js"></script>
+    <script src="http://127.0.0.1:8000/public/asst/js/bootstrap.min.js"></script>
+
+</body>
+</html>

@@ -1,13 +1,15 @@
-class DashboardController:
+from sproutepy.SprouteApp import SprouteApp 
+
+from app.http.utils.AuthUtil import AuthUtil
+from sproutepy.Helper import view, route 
+
+class DashboardController(SprouteApp):
         
     def __init__(self) -> None:
         pass
     
     def index(self, request):
-        return 'DashboardController: index'
-
-    def dashboardStatistics(self, request):
-        return 'DashboardController: dashboardStatistics'
-
-    def yearlyIncomeCountStat(self, request):
-        return 'DashboardController: yearlyIncomeCountStat'
+        return view('views.dashboard', {
+            'status': 'success', 
+            'message': "Welcome back!"
+        })

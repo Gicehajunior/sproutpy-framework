@@ -5,6 +5,9 @@ from sproutepy.SprouteRequestHandler import SproutRequestHandler
 from sproutepy.TemplatingEngine import TemplatingEngine as engine
 
 class SprouteApp:
+    
+    input = {}
+    
     def __init__(self):
         self.router = None
         self.database_manager = None

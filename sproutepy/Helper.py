@@ -1,10 +1,9 @@
 import os
 import re
-import json
+import json 
 from config.configuration import config 
-from sproutepy.SprouteApp import SprouteApp 
+from sproutepy.Router import Router as router 
 from jinja2 import Environment, FileSystemLoader
-
 
 def view(route, response_dump={}):
     # Extract the resource type and file name from the template_name
@@ -44,11 +43,11 @@ def view(route, response_dump={}):
     
     return html_content
 
-def route(route, response_dump={}):
-    return json.dumps(response_dump)
-
-def resource(filepath, response_dump={}):
-    return json.dumps(response_dump)
-
-
-
+def route(route, response_dump={}): 
+    return {
+        'status': 302,
+        'headers': {
+            'Location': route
+        },
+        'body': response_dump
+    }

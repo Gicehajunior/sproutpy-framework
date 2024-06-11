@@ -21,7 +21,7 @@
     "repository": "https://github.com/Gicehajunior/sproutpy-framework",
     "license": "MIT",
     "dependencies": {
-        "bootstrap": "^5.0.1",
+        "bootstrap": "^4.6.x",
         "dotenv": "^16.4.5",
         "fs-extra": "^11.2.0",
         "gulp": "^4.0.2",
