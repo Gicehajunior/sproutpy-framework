@@ -64,9 +64,7 @@ from app.http.controllers.DashboardController import DashboardController
 router = Router()
 
 router.get('/', AuthController().login)
-router.get('/dashboard', DashboardController().index)
-router.get('/dashboard/statistics', DashboardController().dashboardStatistics)
-router.get('/dashboard/income/stats', DashboardController().yearlyIncomeCountStat)
+router.get('/dashboard', DashboardController().index) 
 router.get('/login', AuthController().login)
 router.get('/register', AuthController().signup)
 router.post('/login', AuthController().login_user)

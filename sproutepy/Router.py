@@ -1,4 +1,5 @@
 import os
+import json
 from config.configuration import config 
 
 class Router:
@@ -42,7 +43,7 @@ class Router:
         static_dir = ''
         asset_path = os.path.join(static_dir, path.lstrip('/'))
         if os.path.isfile(asset_path):
-            with open(asset_path, 'r', encoding="utf-8") as file: 
+            with open(asset_path, 'rb', encoding="utf-8") as file: 
                 return file.read()
         else:
             return '404 Error: ' + f'{asset_path}' + ' could not be found'
@@ -59,3 +60,4 @@ class Router:
         
         # If no route matches, return 404 Not Found
         return '404 Route Error: ' + f'{route_handler}' + ' could not be found'
+    
