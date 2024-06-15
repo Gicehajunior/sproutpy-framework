@@ -1,11 +1,14 @@
-*.pyc
 .env
-nodemodules
+*.pyc
 test.py
-public/main.js
-node_modules
+__pycache__
+node_modules 
+public/main.js 
 public/asst/css/bootstrap.min.css
 public/asst/jquery/jquery.js
 public/asst/js/bootstrap.min.js
 public/asst/js/popper.min.js
 
+sproutepy/SprouteSessionizer.py
+public/asst/.DS_Store
+.DS_Store

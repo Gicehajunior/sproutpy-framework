@@ -18,7 +18,7 @@ class AuthController(SprouteApp):
     def signup(self, request):
         return view('auth.signup', {
             'status': 'success', 
-            'message': 'Please signup!' 
+            'message': 'Please signup!'
         })
 
     def login_user(self, request):
@@ -27,7 +27,7 @@ class AuthController(SprouteApp):
         
         return route('dashboard', {
             'status': 'success', 
-            'message': self.input
+            'message': 'Please Login'
         })
 
     def signup_user(self, request):

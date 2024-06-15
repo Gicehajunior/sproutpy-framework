@@ -5,6 +5,9 @@ from dotenv import load_dotenv
 load_dotenv()
 
 database = {
+    # Default Database Configuration
+    'default': os.getenv('DB_CONNECTION', 'mysql'), 
+    
     # MySQL Database Configuration
     'mysql_database': {
         'connection': 'mysql',
