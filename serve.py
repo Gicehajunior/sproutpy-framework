@@ -48,18 +48,13 @@ from routes.pathway import router
 from config.database import database
 from config.configuration import config 
 
-def simulate_request(method, path, body=None):
-    request = SproutRequest(method, path, body)
-    response = request.handle_request(router)
-    print(response)
-
 # Entry point
 if __name__ == '__main__':  
     # Initialize the application
     app = SprouteApp()
     
     # Setup database connection
-    db_manager = DB(database['mysql_database'])
+    db_manager = DB(database)
     db_manager.connect()
     app.set_database_manager(db_manager)
     
