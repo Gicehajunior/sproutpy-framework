@@ -9,8 +9,19 @@ SproutPy is a Python framework designed to accelerate your web application devel
 * Python (version 3.x recommended)
 * A code editor or IDE of your choice (e.g., Visual Studio Code, PyCharm)
 
-**Installation (Coming Soon!)**
+**Venv preparation**  
 
+Prepare the venv:
+```
+python -m venv venv
+```
+You can activate it for your shell: 
+```
+source venv/bin/activate
+```
+or use the linked `pip` and `python` executables in the `venv/bin` directory (recommended to avoid messing your shell)
+
+**Installation (Coming Soon!)**  
 There are two ways to get started with SproutPy:
 
 1. **Install from PyPI (Future Release):**
