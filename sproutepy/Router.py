@@ -1,5 +1,6 @@
 import os
 import json
+import sys
 from config.configuration import config 
 
 class Router:
@@ -23,7 +24,7 @@ class Router:
     def delete(self, path, handler):
         self._add_route(path, handler, methods=['DELETE'])
 
-    def _add_route(self, path, handler, methods):
+    def _add_route(self, path, handler, methods):  
         for method in methods:
             if method in self.routes:
                 self.routes[method][path] = handler
@@ -42,13 +43,13 @@ class Router:
         # Define the directory where static assets are located
         static_dir = ''
         asset_path = os.path.join(static_dir, path.lstrip('/'))
-        if os.path.isfile(asset_path):
+        if os.path.isfile(asset_path): 
             with open(asset_path, 'rb', encoding="utf-8") as file: 
                 return file.read()
         else:
             return '404 Error: ' + f'{asset_path}' + ' could not be found'
 
-    def route_request(self, path, method, body=None):
+    def route_request(self, path, method, body=None): 
         # Check if the route exists for the given method and path
         route_handler = self.routes.get(method, {}).get(path)
         if route_handler:
@@ -59,5 +60,5 @@ class Router:
             return self.serve_static_asset(path)
         
         # If no route matches, return 404 Not Found
-        return '404 Route Error: ' + f'{route_handler}' + ' could not be found'
+        return '404 Route Error: ' + f'{route_handler}' + ' could not be found!'
     

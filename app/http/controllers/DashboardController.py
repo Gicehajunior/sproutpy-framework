@@ -9,7 +9,8 @@ class DashboardController(SprouteApp):
         pass
     
     def index(self, request):
-        return view('views.dashboard', {
+        return view('dashboard', {
             'status': 'success', 
-            'message': "Welcome back!"
+            'message': "Welcome back!",
+            'page_title': "Dashboard Page",
         })

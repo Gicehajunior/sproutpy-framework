@@ -8,7 +8,7 @@ class AuthController(SprouteApp):
         self.response = None
     
     def login(self, request):
-        return view('auth.login', {
+        return view('login', {
             'status': 'success', 
             'message': 'Please login!',
             'username': 'gicehajunior76@gmail.com', 
@@ -16,7 +16,7 @@ class AuthController(SprouteApp):
         })
 
     def signup(self, request):
-        return view('auth.signup', {
+        return view('signup', {
             'status': 'success', 
             'message': 'Please signup!'
         })
@@ -31,13 +31,13 @@ class AuthController(SprouteApp):
         })
 
     def signup_user(self, request):
-        return route('/login', {
+        return route('login', {
             'status': 'success', 
             'message': 'Logout successfull' 
         })
 
     def logout(self, request):
-        return route('/login', {
+        return route('login', {
             'status': 'success', 
             'message': 'You got booted out. Please login!' 
         })

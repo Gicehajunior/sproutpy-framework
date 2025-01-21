@@ -1,33 +1,22 @@
 import os
 import re
+import sys
 import json 
 from config.configuration import config 
+from sproutepy.TemplatingEngine import TemplatingEngine
 from sproutepy.Router import Router as router 
 from jinja2 import Environment, FileSystemLoader
 
-def view(route, response_dump={}):
-    # Extract the resource type and file name from the template_name
-    resource_type, file_name = route.split('.')
-    
+def view(route, response_dump={}): 
     # Define the base directory for resources
     base_dir = config['STATIC_FILES_BASEPATH']
-    
-    # Define the directory path based on the resource type
-    if resource_type == 'auth':
-        directory = os.path.join(base_dir, 'auth')
-    elif resource_type == 'views':
-        directory = os.path.join(base_dir, 'views')
-    elif resource_type == 'layouts':
-        directory = os.path.join(base_dir, 'layouts')
-    else:
-        raise ValueError(f"Invalid resource type: {resource_type}")
 
     # Define the file path
-    file_path = os.path.join(os.getcwd(), directory, f"{file_name}.html")
-
-    # Load HTML content from the file
-    with open(file_path, 'r', encoding="utf-8") as file:
-        html_content = file.read()
+    file_path =  f"{route}.html" 
+    
+    # Load HTML content from the file 
+    parser = TemplatingEngine(base_dir)
+    html_content = parser.parse_template(file_path) 
 
     # OPTIONAL: Replace placeholders in HTML with response_dump data
     for key, value in response_dump.items():
