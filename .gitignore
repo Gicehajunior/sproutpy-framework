@@ -4,6 +4,8 @@ test.py
 __pycache__
 node_modules 
 public/main.js 
+public/asst/
+public/bootstrap/
 public/asst/css/bootstrap.min.css
 public/asst/jquery/jquery.js
 public/asst/js/bootstrap.min.js

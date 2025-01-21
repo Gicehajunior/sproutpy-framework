@@ -58,10 +58,11 @@
 # DATE CREATED: 1st June 2024
 # VERSION: 1.0.0
 # ==============================================================================
+import sys
 from sproutepy.Router import Router
 from app.http.authentication.AuthController import AuthController
 from app.http.controllers.DashboardController import DashboardController 
-router = Router()
+router = Router() 
 
 router.get('/', AuthController().login)
 router.get('/dashboard', DashboardController().index) 

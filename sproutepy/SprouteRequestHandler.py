@@ -68,8 +68,8 @@ class SproutRequestHandler(BaseHTTPRequestHandler):
     
     def route_request(self, path, method, request={}):
         route_handler = self.server.app.router.routes.get(method, {}).get(path)
-        if route_handler:
-            response = route_handler(request)
+        if route_handler: 
+            response = route_handler(request) # call the controller method bound to this route, & parse the request data.
             self._send_response(response)
             return True
         return False
