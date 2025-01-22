@@ -1,11 +1,14 @@
 import os
-from sproutepy.DatabaseManager import DatabaseManager as DB
+from app.models.Model import Model
 
-class Auth(DB):
+class Auth(Model):
     
     table = 'users'
     
     def __init__(self) -> None:
         pass
     
-    
+    def dataload() -> None:
+        return {
+            'page_title': "Dashboard Page",
+        }

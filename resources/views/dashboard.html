@@ -6,6 +6,11 @@
     <div class="main">
         <div class="content m-5">
             <p>{{message}}</p>
+            <br>
+            {% for item in auth_session %}
+                <li>{{ item[1] }}</li>
+            {% endfor %}
+        </ul>
         </div>
     </div>
     
