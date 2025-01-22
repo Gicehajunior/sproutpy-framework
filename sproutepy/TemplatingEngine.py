@@ -10,10 +10,11 @@ class TemplatingEngine(Environment, FileSystemLoader):
         self.env = Environment(loader=FileSystemLoader(f'{self.templates_dir}'))
 
     def parse_template(self, template_path):
+        template_path = template_path.replace('.', '/')
         file_path = self._locate_file(template_path)
         
         if not file_path or not os.path.isfile(file_path):
-            raise FileNotFoundError(f"Template file {file_path} not found.") 
+            raise FileNotFoundError(f"Template file {template_path} not found.") 
         
         with open(file_path, 'r') as template_file:
             content = template_file.read() 
