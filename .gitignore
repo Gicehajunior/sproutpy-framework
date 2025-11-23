@@ -1,17 +1,19 @@
 venv
 .env
+*.zip
 *.pyc
 test.py
 __pycache__
 node_modules 
 public/main.js 
-public/asst/
+public/static/js
+public/static/charts
+public/static/jquery
+public/static/printjs
+public/static/toastr
+public/static/sweetalert
 public/bootstrap/
-public/asst/css/bootstrap.min.css
-public/asst/jquery/jquery.js
-public/asst/js/bootstrap.min.js
-public/asst/js/popper.min.js
 
 sproutepy/SprouteSessionizer.py
-public/asst/.DS_Store
+public/static/.DS_Store
 .DS_Store
