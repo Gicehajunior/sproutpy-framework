@@ -1,8 +1,10 @@
-import os
-import cgi
+import os 
 import json
 import mimetypes
 from http import cookies
+from urllib.parse import parse_qs
+from email.parser import BytesParser
+from email.policy import default
 from config.configuration import config 
 from http.server import BaseHTTPRequestHandler
 from sproutepy.SprouteRequest import SproutRequest 
@@ -26,25 +28,66 @@ class SproutRequestHandler(BaseHTTPRequestHandler):
         request = SproutRequest('POST', parsed_path.path, form_data)
         response = request.handle_request(self.server.app.router)
         self._handle_response(response)
-        
+    
+    def parse_multipart_form_data(self, content_type: str, body: bytes):
+        """
+        Parse multipart/form-data using Python's modern email package.
+        Returns a simple dict of key=value and key=file-object.
+        """
+        if "boundary=" not in content_type:
+            raise ValueError("Multipart 'boundary' missing")
+
+        boundary = content_type.split("boundary=")[1]
+
+        header = f"Content-Type: {content_type}\r\n\r\n".encode()
+        msg = BytesParser(policy=default).parsebytes(header + body)
+
+        parsed = {}
+
+        for part in msg.iter_parts():
+            disposition = part.get("Content-Disposition")
+            if not disposition:
+                continue
+
+            params = dict(part.get_params(header="content-disposition"))
+            name = params.get("name")
+            filename = params.get("filename")
+
+            if not name:
+                continue
+
+            if filename:  # file upload
+                parsed[name] = {
+                    "filename": filename,
+                    "content_type": part.get_content_type(),
+                    "data": part.get_payload(decode=True),
+                }
+            else:  # text field
+                parsed[name] = part.get_payload(decode=True).decode(
+                    part.get_content_charset() or "utf-8"
+                )
+
+        return parsed
+
     def parse_request_data(self, content_type):
         parsed_data = {}
-        if 'multipart/form-data' in content_type:
-            form_data = cgi.FieldStorage(
-                fp=self.rfile,
-                headers=self.headers,
-                environ={'REQUEST_METHOD': 'POST'},
-                keep_blank_values=True
-            )
-            for key in form_data.keys():
-                parsed_data[key] = form_data.getvalue(key)
+        content_length = int(self.headers.get("Content-Length", 0))
+        post_data = self.rfile.read(content_length) if content_length > 0 else b""
+
+        # multipart/form-data
+        if "multipart/form-data" in content_type:
+            try:
+                parsed_data = self.parse_multipart_form_data(content_type, post_data)
+            except Exception as e:
+                self.send_error(400, f"Malformed multipart data: {e}")
+                parsed_data = {}
         elif 'application/x-www-form-urlencoded' in content_type:
             content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length).decode('utf-8')
+            post_data = post_data.decode('utf-8')
             parsed_data = parse_qs(post_data)
         elif 'text/plain' in content_type:
             content_length = int(self.headers['Content-Length'])
-            post_data = self.rfile.read(content_length).decode('utf-8')
+            post_data = post_data.decode('utf-8')
             parsed_data = self._parse_text_plain_data(post_data)
         else:
             self.send_error(415, "Unsupported media type") 
@@ -52,9 +95,8 @@ class SproutRequestHandler(BaseHTTPRequestHandler):
         return parsed_data
         
     def serve_static_asset(self, path):
-        static_dir = ''  # Directory where your static files are stored
+        static_dir = os.getcwd()  # Directory where your static files are stored
         file_path = os.path.join(static_dir, path.lstrip('/'))
-
         if os.path.isfile(file_path):
             self.send_response(200)
             mime_type, _ = mimetypes.guess_type(file_path)
